@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# Source/reference images kept out of the repo (the site uses public/profile.png)
+/Professional Portrait with Orange Accents.png
+/WhatsApp Image *.jpeg
