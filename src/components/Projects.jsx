@@ -8,7 +8,15 @@ function ProjectCard({ project }) {
   const external = Boolean(project.link)
   return (
     <article className="card card-hover group flex flex-col bg-surface-2 p-3">
-      <ProjectPreview variant={project.preview} />
+      <div className="relative">
+        <ProjectPreview variant={project.preview} />
+        {project.status && (
+          <span className="absolute top-2.5 right-2.5 flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-bg/80 px-2 py-0.5 text-[0.6rem] font-semibold text-amber-300 backdrop-blur">
+            <span className="size-1.5 animate-pulse rounded-full bg-amber-400" />
+            {project.status}
+          </span>
+        )}
+      </div>
       <div className="flex flex-1 flex-col p-2 pt-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -35,7 +43,7 @@ function ProjectCard({ project }) {
             rel={external ? 'noreferrer' : undefined}
             className="flex items-center gap-1 text-xs font-semibold text-accent transition-transform group-hover:translate-x-0.5"
           >
-            {external ? 'View Case Study' : 'Ask me about it'} <ArrowUpRight size={14} />
+            {external ? project.linkLabel ?? 'View Case Study' : 'Ask me about it'} <ArrowUpRight size={14} />
           </a>
         </div>
       </div>

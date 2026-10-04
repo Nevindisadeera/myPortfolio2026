@@ -65,6 +65,19 @@ export const services = [
 
 export const projects = [
   {
+    name: 'ATSly',
+    subtitle: 'AI-Powered ATS Resume Scanner',
+    tag: 'Personal Project',
+    year: '2026 - Present',
+    desc: 'Upload a resume to see how applicant tracking systems read it, measure how well it matches a target role and get clear, actionable improvements.',
+    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Zod', 'Vitest', 'Playwright'],
+    preview: 'scanner',
+    status: 'In Progress',
+    link: 'https://github.com/Nevindisadeera/ATSly',
+    linkLabel: 'View on GitHub',
+    featured: true,
+  },
+  {
     name: 'Vesant',
     subtitle: 'Compliance Management Platform',
     tag: 'Compliance Platform',
@@ -92,7 +105,7 @@ export const projects = [
     desc: 'MERN platform for anonymous and identified complaints with file uploads, location tagging, role-based dashboards and chatbot assistance.',
     tech: ['MongoDB', 'Express', 'React', 'Node.js'],
     preview: 'map',
-    featured: true,
+    featured: false,
   },
   {
     name: 'ExpenseTracker',

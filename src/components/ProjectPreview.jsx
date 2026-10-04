@@ -167,6 +167,67 @@ function MobileMock() {
   )
 }
 
+function ScannerMock() {
+  const r = 15
+  const c = 2 * Math.PI * r
+  return (
+    <div className="flex flex-1 gap-1.5">
+      <div className="relative flex-1 overflow-hidden rounded border border-line bg-surface-2 p-1.5">
+        <span className="block h-1.5 w-12 rounded bg-neutral-400" />
+        <span className="mt-1 block h-1 w-8 rounded bg-line-2" />
+        {[
+          ['w-[85%]', true],
+          ['w-[70%]', false],
+          ['w-[90%]', false],
+          ['w-[60%]', true],
+          ['w-[80%]', false],
+          ['w-[75%]', true],
+        ].map(([w, hit], i) => (
+          <span key={i} className={`mt-1.5 flex h-1 gap-1 ${w}`}>
+            <span className="h-1 flex-1 rounded bg-line-2" />
+            {hit && <span className="h-1 w-4 rounded bg-accent/80" />}
+          </span>
+        ))}
+        <span className="absolute inset-x-0 top-0 h-6 animate-scan bg-linear-to-b from-transparent via-accent/25 to-transparent" />
+      </div>
+      <div className="flex w-20 flex-col gap-1.5">
+        <div className="grid place-items-center rounded border border-line bg-surface-2 py-1">
+          <svg viewBox="0 0 40 40" className="size-10">
+            <circle cx="20" cy="20" r={r} fill="none" stroke="#262626" strokeWidth="4" />
+            <circle
+              cx="20"
+              cy="20"
+              r={r}
+              fill="none"
+              stroke="#f97316"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeDasharray={c}
+              strokeDashoffset={c * 0.18}
+              transform="rotate(-90 20 20)"
+            />
+            <text x="20" y="23.5" textAnchor="middle" className="fill-white text-[10px] font-bold">
+              82
+            </text>
+          </svg>
+        </div>
+        {[
+          ['w-[80%]', 'bg-green-500/60'],
+          ['w-[55%]', 'bg-accent/70'],
+          ['w-[35%]', 'bg-red-500/60'],
+        ].map(([w, color], i) => (
+          <div key={i} className="rounded border border-line bg-surface-2 p-1">
+            <span className="block h-1 w-8 rounded bg-neutral-500" />
+            <span className="mt-1 block h-1 rounded-full bg-line-2">
+              <span className={`block h-1 rounded-full ${w} ${color}`} />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function ProjectPreview({ variant }) {
   return (
     <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-[#0c0c0c] p-2.5">
@@ -180,6 +241,7 @@ export default function ProjectPreview({ variant }) {
             {variant === 'dashboard' && <DashboardMock />}
             {variant === 'table' && <TableMock />}
             {variant === 'map' && <MapMock />}
+            {variant === 'scanner' && <ScannerMock />}
           </div>
         </div>
       )}
