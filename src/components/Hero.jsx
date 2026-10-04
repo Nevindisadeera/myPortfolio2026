@@ -1,9 +1,8 @@
 import { useRef } from 'react'
 import { ArrowRight, Check, Download } from 'lucide-react'
 import { profile } from '../data/portfolio'
-import DecryptedText from './DecryptedText'
-import LightRays from './LightRays'
-import Particles from './Particles'
+import BlurText from './BlurText'
+import Silk from './Silk'
 
 const metrics = [
   { label: 'Experience', value: '1+ yrs', delta: 'and growing', points: [2, 3, 3, 4, 5, 5, 6, 7, 8] },
@@ -102,8 +101,10 @@ export default function Hero() {
       onMouseMove={onMouseMove}
       className="group/hero relative overflow-hidden pt-28 pb-10 lg:pt-36 lg:pb-16"
     >
-      <LightRays className="pointer-events-none absolute inset-x-0 top-0 h-[110vh]" />
-      <Particles count={320} baseSize={130} className="pointer-events-none absolute inset-0" />
+      <Silk className="pointer-events-none absolute inset-0 opacity-70" />
+      {/* Darken the silk behind the text and fade it into the page below */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.75)_0%,rgba(10,10,10,0.35)_55%,transparent_80%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-b from-transparent to-bg" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-130 w-205 -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]" />
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/hero:opacity-100 bg-[radial-gradient(500px_circle_at_var(--sx)_var(--sy),rgba(249,115,22,0.09),transparent_45%)]" />
 
@@ -117,10 +118,10 @@ export default function Hero() {
             </p>
             <h1 className="text-6xl leading-[0.95] font-black tracking-tight sm:text-7xl xl:text-8xl">
               <span className="block">
-                <DecryptedText text={profile.firstName.toUpperCase()} delay={300} />
+                <BlurText text={profile.firstName.toUpperCase()} delay={200} />
               </span>
-              <span className="text-shine block">
-                <DecryptedText text={profile.lastName.toUpperCase()} delay={700} />
+              <span className="block text-accent">
+                <BlurText text={profile.lastName.toUpperCase()} delay={650} />
                 <span className="animate-blink">_</span>
               </span>
             </h1>

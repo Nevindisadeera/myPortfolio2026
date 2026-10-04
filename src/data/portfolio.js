@@ -2,7 +2,7 @@ export const profile = {
   firstName: 'Nevindi',
   lastName: 'Sadeera',
   fullName: 'Nevindi Sadeera Lokuliyanage',
-  role: 'Full Stack Developer',
+  role: 'Associate Software Engineer',
   tagline: 'I build scalable web applications with clean architecture, maintainable code and features shipped end to end.',
   location: 'Matara, Sri Lanka',
   phone: '+94 76 386 2252',
@@ -10,10 +10,10 @@ export const profile = {
   availability: 'Available for full-time & freelance opportunities',
   cvFile: `${import.meta.env.BASE_URL}Nevindi_Sadeera_CV.pdf`,
   socials: {
-    github: 'https://github.com/nevindiiii',
+    github: 'https://github.com/Nevindisadeera',
     linkedin: 'https://linkedin.com/in/nevindisadeera',
     medium: 'https://medium.com/@nevindiiii',
-    portfolio: 'https://nevindiiii.github.io/Portfolio2025',
+    portfolio: 'https://nevindisadeera.github.io/myPortfolio2026/',
   },
   heroChips: ['TypeScript', 'React', 'Next.js', 'Node.js', 'Go', 'PostgreSQL'],
 }
@@ -125,11 +125,24 @@ export const stats = [
 
 export const experience = [
   {
+    role: 'Associate Software Engineer',
+    company: 'BotCalm (PVT) LTD',
+    location: 'Matara, Sri Lanka',
+    period: 'Sep 2026 - Present',
+    current: true,
+    points: [
+      'Develop and maintain frontend features for the Vesant compliance platform using Next.js, React and TypeScript.',
+      'Work across frontend and backend services to implement features, investigate defects and resolve issues.',
+      'Integrate frontend workflows with REST APIs and backend services, including Shufti and other compliance integrations.',
+      'Use WSL and Linux-based environments for backend development, debugging and local service workflows.',
+    ],
+  },
+  {
     role: 'Full Stack Engineer (Trainee)',
     company: 'BotCalm (PVT) LTD',
     location: 'Matara, Sri Lanka',
-    period: 'Sep 2025 - Present',
-    current: true,
+    period: 'Sep 2025 - Sep 2026',
+    current: false,
     points: [
       'Build end-to-end features in React, Next.js, TypeScript, Go and Node.js following scalable architecture patterns.',
       'Design and implement RESTful APIs and third-party integrations that extend product functionality.',

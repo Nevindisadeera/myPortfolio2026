@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import { navLinks } from '../data/portfolio'
@@ -15,19 +15,44 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Scroll spy: the active link is the last section whose top has passed 40% of the viewport.
+  // About and Services share a row (same top), so the first one wins unless the other was clicked.
+  const clicked = useRef(null)
   useEffect(() => {
-    const sections = navLinks.map((l) => document.querySelector(l.href)).filter(Boolean)
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(`#${e.target.id}`)
-        })
-      },
-      { rootMargin: '-40% 0px -55% 0px' },
-    )
-    sections.forEach((s) => io.observe(s))
-    return () => io.disconnect()
+    const update = () => {
+      const line = window.innerHeight * 0.4
+      let current = navLinks[0].href
+      let currentTop = -Infinity
+      for (const { href } of navLinks) {
+        const el = document.querySelector(href)
+        if (!el) continue
+        const top = el.getBoundingClientRect().top
+        if (top <= line && top > currentTop + 2) {
+          current = href
+          currentTop = top
+        }
+      }
+      const pick = clicked.current && document.querySelector(clicked.current)
+      if (pick && Math.abs(pick.getBoundingClientRect().top - currentTop) <= 2) current = clicked.current
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        current = navLinks[navLinks.length - 1].href
+      }
+      setActive(current)
+    }
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [])
+
+  const onNavClick = (href) => {
+    clicked.current = href
+    setActive(href)
+    setOpen(false)
+  }
 
   const linkClass = (href) =>
     `relative text-sm font-medium transition-colors hover:text-accent ${
@@ -46,7 +71,7 @@ export default function Navbar() {
         <ul className="hidden items-center gap-7 lg:flex">
           {navLinks.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className={linkClass(l.href)}>
+              <a href={l.href} onClick={() => onNavClick(l.href)} className={linkClass(l.href)}>
                 {l.label}
                 {active === l.href && (
                   <span className="absolute -bottom-1.5 left-0 h-0.5 w-full rounded bg-accent" />
@@ -83,7 +108,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => onNavClick(l.href)}
                   className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-surface-2 hover:text-accent ${
                     active === l.href ? 'text-accent' : 'text-muted'
                   }`}
