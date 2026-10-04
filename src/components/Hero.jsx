@@ -8,7 +8,7 @@ import Particles from './Particles'
 const metrics = [
   { label: 'Experience', value: '1+ yrs', delta: 'and growing', points: [2, 3, 3, 4, 5, 5, 6, 7, 8] },
   { label: 'Projects', value: '5+', delta: '+2 in 2026', points: [1, 1, 2, 2, 3, 3, 4, 5, 5] },
-  { label: 'Technologies', value: '20+', delta: '+Go, n8n', points: [3, 4, 4, 6, 7, 9, 10, 12, 14] },
+  { label: 'Technologies', value: '50+', delta: '+Go, n8n', points: [3, 4, 4, 6, 7, 9, 10, 12, 14] },
 ]
 
 function Sparkline({ points, id }) {

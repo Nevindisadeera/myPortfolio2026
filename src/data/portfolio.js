@@ -120,7 +120,7 @@ export const stats = [
   { value: '5+', label: 'Projects Built', icon: 'Rocket' },
   { value: '1+', label: 'Years Experience', icon: 'Code' },
   { value: '2', label: 'Organisations', icon: 'Building' },
-  { value: '20+', label: 'Technologies', icon: 'Layers' },
+  { value: '50+', label: 'Technologies', icon: 'Layers' },
 ]
 
 export const experience = [
