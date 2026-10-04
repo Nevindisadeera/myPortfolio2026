@@ -19,14 +19,14 @@ export const profile = {
 }
 
 export const about = {
-  heading: ['Crafting solutions', 'that scale.'],
+  heading: ['Associate', 'Software Engineer.'],
   summary:
-    "I'm Nevindi, a Full Stack Developer with 1+ year of professional experience building web applications, REST APIs and role-based systems. I work across the stack with TypeScript, React, Next.js, Node.js and Go, with a focus on clean architecture, maintainable code and shipping features end to end.",
+    "I'm Nevindi, an Associate Software Engineer at BotCalm with 1+ year of professional experience building full-stack web applications, RESTful APIs, role-based systems and third-party integrations. I contribute to production software across frontend and backend services with TypeScript, React, Next.js, Node.js, Go, PostgreSQL and MongoDB.",
   points: [
-    '1+ year of professional experience',
-    '5+ full-stack projects delivered',
-    'Clean, maintainable, reviewed code',
-    'REST APIs & third-party integrations',
+    '1+ year of production experience at BotCalm',
+    'Full-stack: React, Next.js, Node.js & Go',
+    'REST APIs & third-party integrations (Shufti)',
+    'Code reviews, debugging & Agile sprints',
   ],
 }
 
